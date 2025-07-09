@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import dotenv from "dotenv";
 dotenv.config();
 const app = express();
@@ -76,7 +76,7 @@ app.put("/api/words/:id/bookmark", async (req, res) => {
 
     // Get current bookmark status
     const word = await collection.findOne({
-      _id: new MongoClient.ObjectId(id),
+      _id: new ObjectId(id),
     });
     if (!word) {
       return res.status(404).json({ error: "Word not found" });
