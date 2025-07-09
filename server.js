@@ -85,7 +85,7 @@ app.put("/api/words/:id/bookmark", async (req, res) => {
     // Toggle bookmark status
     const newBookmarkStatus = !word.bookmarked;
     await collection.updateOne(
-      { _id: new MongoClient.ObjectId(id) },
+      { _id: new ObjectId(id) },
       { $set: { bookmarked: newBookmarkStatus } }
     );
 
